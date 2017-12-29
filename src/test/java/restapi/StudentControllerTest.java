@@ -53,7 +53,7 @@ public class StudentControllerTest {
             Student student = objectMapper.readValue(studentString, Student.class);
             System.out.println("Jackson ObjectMapper");
             System.out.println(student);
-            assertEquals(student.getName(), "Ranga Karanam");
+            assertEquals(student.getName(), "Nhat Thai");
         } catch (Exception e) {
             //TODO: handle exception
             System.out.println(e);
@@ -63,20 +63,20 @@ public class StudentControllerTest {
         System.out.println("Convert Gson");
         Gson gson = new Gson();
         Student convertStudent = gson.fromJson(studentString, Student.class);
-        assertEquals(convertStudent.getName(), "Ranga Karanam");
+        assertEquals(convertStudent.getName(), "Nhat Thai");
 
         // RestTestTemplate Convert obj
         System.out.println("RestTestTemplate Convert obj");
         Student studentObj = restTestTemplate.getForObject(
                 "http://localhost:" + port + "/students/1", Student.class);
         System.out.println(studentObj);
-        assertEquals(studentObj.getName(), "Ranga Karanam");
+        assertEquals(studentObj.getName(), "Nhat Thai");
 
         // ResponseEntity
         System.out.println("RestTestTemplate ResponseEntity");
         ResponseEntity<Student> responseEntity = restTestTemplate.getForEntity("/students/1", Student.class);
         Student studentEntity = responseEntity.getBody();
         System.out.println(studentEntity);
-        assertEquals(studentEntity.getName(), "Ranga Karanam");
+        assertEquals(studentEntity.getName(), "Nhat Thai");
     }
 }
